@@ -1,0 +1,52 @@
+.header{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pagination .page {
+    display: inline-flex;
+    padding: 4px 8px;
+    margin: 10px 4px;
+    text-decoration: none;
+    color: black;
+}
+
+.ul {
+    display: flex;
+    margin-left: 0;
+    padding-left: 0
+}
+
+.li {
+    list-style-type: none;
+
+}
+
+.input,
+.textarea {
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.pagination .page.active {
+    background-color: #eee;
+}
+
+.btn{
+    display: inline-flex;
+    padding: 10px;
+    color: #001304;
+    text-decoration: none;
+    background: #87f187;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.btn:hover{
+    background: #7bd87b;
+    transition: .4s;
+}

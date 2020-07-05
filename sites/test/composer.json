@@ -1,0 +1,14 @@
+{
+    "name": "ruslanmuhametzanov/test",
+    "authors": [
+        {
+            "name": "Ruslan",
+            "email": "ruslan231984@yandex.ru"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0",
+        "illuminate/database": "^7.18",
+        "rakit/validation": "^1.2"
+    }
+}
