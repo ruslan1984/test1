@@ -10,6 +10,9 @@ $( document ).ready( function () {
         autoload: true,
         sortOrder: 'desc',
         sortName: 'created_at',
+        sort: function(ind) {
+            sorting( ind);
+        },
         controller: {
             loadData: () => {
                 var d = $.Deferred();
@@ -45,6 +48,7 @@ $( document ).ready( function () {
                             break;
                         case '1':
                             alert( "Данные успешно обновлены!" );
+                            grid.jsGrid( "loadData" );
                             break;
                         default:
                             alert( "Ошибка" );
@@ -62,30 +66,19 @@ $( document ).ready( function () {
             sort: "ASC",
             editing: false,
             sorting: true,
-            sorter: () => {
-                sorting( 0 );
-            }
         },
         {
             name: "email",
             type: "number",
             width: 50,
-            editing: false,
-            sorter: () => {
-                sorting( 1 );
-            }
-
+            editing: false
         },
         {
             name: "task",
             title: "Текст задачи",
             type: "text",
-            width: 200,
-            sorter: () => {
-                sorting( 2 );
-            }
+            width: 200
         },
-        
         {
             name: "status",
             title: "Cтатус",
@@ -99,10 +92,7 @@ $( document ).ready( function () {
         { 
             name: "taskReady", 
             type: "checkbox", 
-            title: "Задание выполнено",
-            sorter: () => {
-                sorting( 4 );
-            }
+            title: "Задание выполнено"
         },
         {
             type: "control",
@@ -111,6 +101,7 @@ $( document ).ready( function () {
         ]
     }
     var grid = $( "#jsGrid" ).jsGrid( data );
+
     function getUrlParams( url ) {
         if ( typeof url == 'undefined' ) {
             url = window.location.search
