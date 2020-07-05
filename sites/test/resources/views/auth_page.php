@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Авторизация</h1>
+    <div>{{  message }}</div>
     <form class="form" action="/login/" method="POST">
         <div>
             <label for="user">Логин </label>

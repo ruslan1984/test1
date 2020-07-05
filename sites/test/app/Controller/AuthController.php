@@ -49,10 +49,9 @@ class AuthController
         if ($login) {
             $message="Вы успешно авторизовались";
             $this->testController->index($request, $message); 
-            // TestController::index($request, $message);
         } else {
             $message = 'Не правильные логин и пароль';
-            self::index($request, $message);
+            self::index($message);
         }
     }
     public function logout($request = []){
