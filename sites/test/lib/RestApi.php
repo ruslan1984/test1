@@ -111,12 +111,19 @@ class RestApi
     private function formDataGet(): array{
         
         $data = $_GET;
-        unset($data['q']);
-        if(empty($data)) return [];
-        foreach($data as &$item){
-            $item = htmlspecialchars($item);
+        
+        $exp=explode('/',$data['q']);
+        $res=[];
+        foreach($exp as $item){
+                if(strpos($item,'=')!==false){
+                        list($key, $value)=explode('=',$item);
+                        $res[$key]=htmlspecialchars($value);
+                }
         }
-        return $data??[];
+        foreach($data as $key => &$item){
+            $res[$key] = htmlspecialchars($item);
+        }
+        return $res??[];
     }
 
     private function formFile()

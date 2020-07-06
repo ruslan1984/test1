@@ -9,6 +9,7 @@
     "require": {
         "twig/twig": "^3.0",
         "illuminate/database": "^7.18",
-        "rakit/validation": "^1.2"
+        "rakit/validation": "^1.2",
+        "vlucas/phpdotenv": "^5.0"
     }
 }
