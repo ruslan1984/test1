@@ -94,12 +94,12 @@ class RestApi
     private function formDataPost(): array
     {
         $data = file_get_contents('php://input');
-        $decoded=json_decode($data,true);
-        if(!empty($decoded)){
+        $decoded = json_decode($data, true);
+        if (!empty($decoded)) {
             return $decoded;
         }
         parse_str($data, $decoded);
-        foreach($decoded as &$item){
+        foreach ($decoded as &$item) {
             $item = htmlspecialchars($item);
         }
         return $decoded ?? [];
@@ -108,22 +108,24 @@ class RestApi
      * Параметры запроса GET
      * @return Array
      */
-    private function formDataGet(): array{
-        
+    private function formDataGet(): array
+    {
+
         $data = $_GET;
-        
-        $exp=explode('/',$data['q']);
-        $res=[];
-        foreach($exp as $item){
-                if(strpos($item,'=')!==false){
-                        list($key, $value)=explode('=',$item);
-                        $res[$key]=htmlspecialchars($value);
+        $res = [];
+        if (isset($data['q'])) {
+            $exp = explode('/', $data['q']);
+            foreach ($exp as $item) {
+                if (strpos($item, '=') !== false) {
+                    list($key, $value) = explode('=', $item);
+                    $res[$key] = htmlspecialchars($value);
                 }
+            }
         }
-        foreach($data as $key => &$item){
+        foreach ($data as $key => &$item) {
             $res[$key] = htmlspecialchars($item);
         }
-        return $res??[];
+        return $res ?? [];
     }
 
     private function formFile()
