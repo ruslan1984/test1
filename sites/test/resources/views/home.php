@@ -47,7 +47,7 @@
             <input required class="input" type="email" name="email" id="email">
         </div>
         <div>
-            <label for="task">task</label>
+            <label for="task">Задание</label>
             <textarea required class="textarea" name="task" id="task" cols="30" rows="10"></textarea>
         </div>
         <button class="btn">Добавить</button>
