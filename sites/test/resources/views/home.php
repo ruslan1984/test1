@@ -18,7 +18,9 @@
         {% endif %}
     </header>
     <div id="jsGrid"></div>
-    <div>{{message}}</div>
+    {% if(message) %}
+        <div>{{ message }}</div>
+    {% endif %}
     <div class='pagination'>
         <ul class="ul">
             {% for i in 1..pageCount %}
