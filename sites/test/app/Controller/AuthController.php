@@ -22,12 +22,16 @@ class AuthController
         $this->paginateService = new PaginateService();
         $this->validator = new Validator;
     }
-    public function index($message = [])
+    public function index($request =[],$message = [])
     {
+        if(!is_array($message))
+        {
+            $message=[$message];
+        }
         echo $this->twig->render(
             'auth_page.php',
             [
-                'message'   => $message
+                'message'   => implode(',', $message)
             ]
         );
     }
@@ -41,7 +45,7 @@ class AuthController
         if ($validation->fails()) {
             $errors = $validation->errors();
             $message = $errors->firstOfAll();
-            self::index($message);
+            self::index($request, $message);
             return;
         }
 
@@ -51,7 +55,7 @@ class AuthController
             $this->testController->index($request, $message); 
         } else {
             $message = 'Неправильные логин и пароль';
-            self::index($message);
+            self::index($request, $message);
         }
     }
     public function logout($request = []){
