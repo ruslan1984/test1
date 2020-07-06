@@ -19,7 +19,10 @@ class TestController
         $this->validator = new Validator;
     }
     public function index($request = [], $message = [])
-    {   
+    {
+        if (!empty($request['message'])) {
+            $message = $request['message'];
+        }
         $page = 1;
         if (!empty($request['page'])) {
             $page = $request['page'];
@@ -67,7 +70,7 @@ class TestController
         } else {
             $message = 'Ошибка';
         }
-        header('Location: /');
+        self::index($request, $message );
     }
     public function update($request = [])
     {

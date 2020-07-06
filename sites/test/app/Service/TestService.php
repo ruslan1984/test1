@@ -68,10 +68,10 @@ class TestService
         }
         return 1;
     }
-    public function insert(array $request)
+    public function insert(array $request):bool
     {
         $data = $request;
         $data['status'] = json_encode(['new' => 'Новыя задача']);
-        $this->testModel->insert($data);
+        return $this->testModel->insert($data);
     }
 }
