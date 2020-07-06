@@ -99,6 +99,8 @@ $( document ).ready( function () {
     $('.page').on('click',function(){
         page = $(this).attr('page');
         grid.jsGrid( "loadData" );
+        $('.pagination .page').removeClass('active');
+        $('.pagination [page='+page+']').addClass('active');
     });
     function sorting( index ) {
         data.fields[ index ].sort = getSort( data.fields[ index ].sort );

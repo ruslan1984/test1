@@ -13,7 +13,9 @@
     background: #eee;
     cursor: pointer;
 }
-
+.pagination .page.active{
+    background: #9e9a9a;
+}
 .ul {
     display: flex;
     margin-left: 0;
@@ -31,11 +33,6 @@
     margin: 5px;
     width: 100%;
     box-sizing: border-box;
-}
-
-
-.pagination .page.active {
-    background-color: #eee;
 }
 
 .btn{
