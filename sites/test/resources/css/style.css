@@ -10,6 +10,8 @@
     margin: 10px 4px;
     text-decoration: none;
     color: black;
+    background: #eee;
+    cursor: pointer;
 }
 
 .ul {

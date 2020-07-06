@@ -1,12 +1,12 @@
 $( document ).ready( function () {
     var auth = Boolean($('.header').attr('auth'));
+    var page = 1;
     var data = {
         width: "100%",
         inserting: false,
         filtering: false,
         editing: auth,
         sorting: true,
-        paging: false,
         autoload: true,
         sortOrder: 'desc',
         sortName: 'created_at',
@@ -16,11 +16,6 @@ $( document ).ready( function () {
         controller: {
             loadData: () => {
                 var d = $.Deferred();
-                var params = getUrlParams( window.location.href );
-                var page = 1;
-                if ( $.isNumeric( params.page ) ) {
-                    page = params.page;
-                }
                 $.ajax( {
                     url: "/data/?page=" + page +
                         "&sort_order=" + data.sortOrder +
@@ -101,30 +96,10 @@ $( document ).ready( function () {
         ]
     }
     var grid = $( "#jsGrid" ).jsGrid( data );
-
-    function getUrlParams( url ) {
-        if ( typeof url == 'undefined' ) {
-            url = window.location.search
-        }
-        var url = url.split( '#' )[ 0 ]
-        var urlParams = {}
-        var queryString = url.split( '?' )[ 1 ]
-        if ( !queryString ) {
-            if ( url.search( '=' ) !== false ) {
-                queryString = url
-            }
-        }
-        if ( queryString ) {
-            var keyValuePairs = queryString.split( '&' )
-            for ( var i = 0; i < keyValuePairs.length; i++ ) {
-                var keyValuePair = keyValuePairs[ i ].split( '=' )
-                var paramName = keyValuePair[ 0 ]
-                var paramValue = keyValuePair[ 1 ] || ''
-                urlParams[ paramName ] = decodeURIComponent( paramValue.replace( /\+/g, ' ' ) )
-            }
-        }
-        return urlParams
-    }
+    $('.page').on('click',function(){
+        page = $(this).attr('page');
+        grid.jsGrid( "loadData" );
+    });
     function sorting( index ) {
         data.fields[ index ].sort = getSort( data.fields[ index ].sort );
         data.sortOrder = data.fields[ index ].sort;

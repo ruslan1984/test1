@@ -30,7 +30,8 @@
             {% set active = '' %}
             {% endif %}
             <li class="li">
-                <a class="page {{active}}" href="/?page={{ i }}">{{ i }}</a>
+                <!-- <a class="page {{active}}" href="/?page={{ i }}">{{ i }}</a> -->
+                <span class="page" page="{{ i }}">{{ i }}</span>
             </li>
             {% endfor %}
         </ul>

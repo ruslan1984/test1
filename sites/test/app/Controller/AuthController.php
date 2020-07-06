@@ -58,5 +58,4 @@ class AuthController
         $this->authService->logout();
         $this->testController->index(); 
     }
-    
 }
