@@ -21,6 +21,6 @@
         <button class="btn">Ок</button>
     </form>
     <br>
-    <a class="btn" href="/"><<<<</a>
+    <a class="btn" href="/"><--</a>
 </body>
 </html>
