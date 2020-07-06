@@ -50,7 +50,7 @@ class AuthController
             $message="Вы успешно авторизовались";
             $this->testController->index($request, $message); 
         } else {
-            $message = 'Не правильные логин и пароль';
+            $message = 'Неправильные логин и пароль';
             self::index($message);
         }
     }

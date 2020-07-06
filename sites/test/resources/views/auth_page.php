@@ -6,7 +6,9 @@
 </head>
 <body>
     <h1>Авторизация</h1>
+    {% if(message) %}
     <div>{{  message }}</div>
+    {% endif %}
     <form class="form" action="/login/" method="POST">
         <div>
             <label for="user">Логин </label>
@@ -18,5 +20,7 @@
         </div>
         <button class="btn">Ок</button>
     </form>
+    <br>
+    <a class="btn" href="/"><<<<</a>
 </body>
 </html>

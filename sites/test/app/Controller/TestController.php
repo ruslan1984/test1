@@ -18,8 +18,8 @@ class TestController
         $this->testService = new TestService();
         $this->validator = new Validator;
     }
-    public function index($request = [], $messages = [])
-    {
+    public function index($request = [], $message = [])
+    {   
         $page = 1;
         if (!empty($request['page'])) {
             $page = $request['page'];
@@ -30,7 +30,7 @@ class TestController
             [
                 'pageCount' => $pageCount,
                 'page' => $page,
-                'messages' => $messages,
+                'message' => $message,
                 'auth' => \Service\AuthService::isAuth()
             ]
         );
@@ -68,8 +68,6 @@ class TestController
             $message = 'Ошибка';
         }
         header('Location: /');
-
-        // self::index($request, $message);
     }
     public function update($request = [])
     {
